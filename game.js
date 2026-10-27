@@ -124,10 +124,24 @@ while (true) {
             alert("Такого прохода нет.");
         }
     }
+    // зал
     else if(room === "Зал"){
         const choice = prompt(
-            "ВЫ В ЗАЛЕ\n"
-
+            "ВЫ В ЗАЛЕ\n" +
+            "1 — Кухня\n" +
+            "2 — Подойти к шкафу\n" +
+            "3 — Проверить рюкзак\n" +
+            "0 — Завершить игру"
         )
+        if (choice === "0" || choice === null) {
+            break;
+        } else if (choice === "1") {
+            room = "Кухня";
+        } else if (choice === "3") {
+            showInventory();
+        } else {
+            alert("Такого прохода нет.");
+        }
     }
+    // 
 }
