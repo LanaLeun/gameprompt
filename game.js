@@ -9,7 +9,7 @@ let flover = false
 function showInventory() {
     if (inventory.length === 0) {
         alert("Рюкзак пуст.");
-    } else {s
+    } else {
         alert("В рюкзаке: " + inventory.join(", "));
     }
 }
@@ -145,7 +145,7 @@ while (true) {
             } else if (choice === "1") {
                 alert("- Да, я брала его, нужно было забрать свою кофту. Ключ лежит в цветочном горшке в подъезде.");
                 flover = true
-                room = "Диалог с Женей"
+                room = "Коридор"
             } else if (choice === "2") {
                 alert("Я тут мяч хочу накачать, пойду футбол играть.");
                 room = "Диалог с Женей"
