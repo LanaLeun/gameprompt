@@ -4,11 +4,12 @@ let jena = false
 let byblic = false
 let closet = false
 let shelf = false
+let flover = false
 
 function showInventory() {
     if (inventory.length === 0) {
         alert("Карманы пусты.");
-    } else {
+    } else {s
         alert("В карманах: " + inventory.join(", "));
     }
 }
@@ -143,6 +144,7 @@ while (true) {
                 break;
             } else if (choice === "1") {
                 alert("- Да, я брала его, нужно было забрать свою кофту. Ключ лежит в цветочном горшке в подъезде.");
+                flover = true
                 room = "Диалог с Женей"
             } else if (choice === "2") {
                 alert("Я тут мяч хочу накачать, пойду футбол играть.");
@@ -174,7 +176,6 @@ while (true) {
             } else {
                 alert("Такого прохода нет.");
             }
-            room = "Коридор"
         }
     }
     // ванная
@@ -202,7 +203,7 @@ while (true) {
                 closet = true
                 room = "Коридор"
             } else if (choice === "2") {
-                alert("Я здесь надолго.");
+                alert("– Я здесь надолго.");
                 room = "Ванная"
             } else if (choice === "3") {
                 room = "Коридор";
@@ -334,6 +335,60 @@ while (true) {
         else {
             alert("- Я не могу его открыть.\n")
             room = "Кухня"
+        }
+    }
+    else if (room === "Подъезд") {
+        const choice = prompt(
+            "ВЫ В ПОДЪЕЗДЕ\n" +
+            "1 – Подойти к квартире бабушки\n" +
+            "2 — Подойти к цветочному горшку\n" +
+            "3 — Вернуться в коридор\n" +
+            "4 — Проверить рюкзак\n" +
+            "0 — Завершить игру"
+        )
+        if (choice === "0" || choice === null) {
+            break;
+        } else if (choice === "1") {
+            room = "Кв Бабушки";
+        } else if (choice === "2") {
+            room = "Цвет горшок";
+        } else if (choice === "3") {
+            room = "Коридор";
+        } else if (choice === "4") {
+            showInventory();
+        } else {
+            alert("Такого прохода нет.");
+        }
+    }
+    else if (room === "Цвет горшок") {
+        if (flover) {
+            if (inventory.includes("Ключ")) {
+                alert("В горшке пусто. Ключ уже у вас.");
+            } else {
+                const takeKey = confirm("В горшке лежит ключ. Взять его?");
+
+                if (takeKey === true) {
+                    inventory.push("Ключ");
+                    alert("Предмет взят!");
+                } else {
+                    alert("Вы оставили ключ в горшке.");
+                }
+            }
+            room = "Подъезд";
+        }
+        else {
+            alert("– Мне не стоит трогать этот цветок. ")
+            room = "Подъезд";
+        }
+    }
+    else if(room === "Кв Бабушки"){
+        if (inventory.includes("Ключ") && inventory.includes("Айрозоль") && inventory.includes("Корм для паука")){
+            alert("Вы успешно вошли в квартиру бабушки и накормили Мурзика\n" +
+            "ИГРА ПРОЙДЕНА")
+            break
+        } else {
+            alert("У вас не хватает предметов для босса. Вернитесь в локацию и найдите их.")
+            room = "Подъезд";
         }
     }
 }
