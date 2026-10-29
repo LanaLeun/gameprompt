@@ -335,5 +335,4 @@ while (true) {
             room = "Подъезд";
         }
     }
-    else
 }
