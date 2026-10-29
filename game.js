@@ -89,7 +89,7 @@ while (true) {
 
                 if (takeKey === true) {
                     inventory.push("Пакет с конфетами");
-                    alert("предмет взят!");
+                    alert("Предмет взят!");
                 } else {
                     alert("Вы оставили пакет на кровати.");
                 }
